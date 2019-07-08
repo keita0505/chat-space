@@ -26,6 +26,7 @@ Things you may want to cover:
 ## messagesテーブル
 
 |Column|Type|Options|
+|------|----|-------|
 |id|integer|null: false, unique: true|
 |body|text|-------|
 |image|string|-------|
@@ -40,6 +41,7 @@ Things you may want to cover:
 ## usersテーブル
 
 |Column|Type|Options|
+|------|----|-------|
 |id|integer|null: false, unique: true|
 |name|string|null: false|
 |email|string|null: false, unique: true|
@@ -52,6 +54,7 @@ Things you may want to cover:
 
 ## groupsテーブル
 |Column|Type|Options|
+|------|----|-------|
 |id|integer|null: false, unique: true|
 |name|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
@@ -64,6 +67,7 @@ Things you may want to cover:
 ## users_groupsテーブル
 
 |Column|Type|Options|
+|------|----|-------|
 |id|integer|null: false, unique: true|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
