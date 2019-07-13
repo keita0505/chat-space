@@ -1,0 +1,48 @@
+.header
+  .header__text
+    グループを作成しました
+.side-bar
+  .side-bar__header
+    .side-bar__header__name
+      名前：sample
+    .side-bar__header__lists
+      = link_to "", class: "side-bar__header__lists__btn side-bar__header__lists__btn--groups-new" do
+        = fa_icon 'edit', class: "side-bar__header__lists__btn--icon-edit"
+      = link_to "", class: "side-bar__header__lists__btn btn--users-edit" do
+        = fa_icon 'cog', class: "side-bar__header__lists__btn--icon-cog" 
+
+  .side-bar__groups
+    .side-bar__groups__group
+      -#= render 'groups/group', group: @group
+      .side-bar__groups__group__name
+        グループ名：sample
+      .side-bar__groups__group__message
+        最終投稿：sample
+.chat
+  .chat__header
+    .chat__header__left-contents
+      .chat__header__left-contents__group-name
+        グループ名：sample
+      .chat__header__left-contents__menber-list
+        メンバーリスト：sample
+    .chat__header__right-contents
+      = link_to "",class: "chat__header__right-contents__btn chat__header__right-contents__btn--group-neme-edit" do
+        Edit
+  .chat__messages
+    .chat__messages__message
+      .chat__messages__message__upper
+        .chat__messages__message__upper__name
+          名前：sample
+        .chat__messages__message__upper__date
+          2019/05/05
+      .chat__messages__message__lower
+        おはよう
+  .chat__form
+    .chat__form__new-message
+      = form_for "" do |f|
+        = f.text_field :body, class: "chat__form__new-message__text", placeholder: "type a message"
+        %label.chat__form__new-message__upload-label{for: "upload-icon"}
+          %i.fa.fa-picture-o
+          = f.file_field :image, id:"upload-icon", class: "chat__form__new-message__upload-icon"
+        = f.submit "Send", class: "chat__form__new-message__submit"
+        
