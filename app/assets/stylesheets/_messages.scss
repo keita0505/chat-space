@@ -2,18 +2,28 @@ $header-height: 101px;
 $side-bar-width: 300px;
 $form-height: 90px;
 
+$white: #fff;
+$side_blue_dark: #253141;
+$side_blue_light: #2f3e51;
+$light_blue: #38AEF0;
+$light_gray: #999;
+$black: #434a54;
+$alert_orange: #F35500;
+
 @mixin basic-font-color-white{
   color: #FFFFFF;
 }
 .header{
-  background-color: #38AEF0;
-  position: absolute;
-  z-index: 2;
-  width: 100vw;
-  &__text{
-    color: white;
+  .notice {
+    background-color: $light_blue;
+    color: $white;
     text-align: center;
-    
+  }
+
+  .alert {
+    background-color: $alert_orange;
+    color: $white;
+    text-align: center;
   }
 }
 
