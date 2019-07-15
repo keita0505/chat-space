@@ -15,7 +15,7 @@
           .side-bar__groups__group__name
             = group.name
           .side-bar__groups__group__message
-            最終投稿：sample
+            = group.show_last_message
 .chat
   .chat__header
     .chat__header__left-contents
@@ -27,20 +27,13 @@
       = link_to "",class: "chat__header__right-contents__btn chat__header__right-contents__btn--group-neme-edit" do
         Edit
   .chat__messages
-    .chat__messages__message
-      .chat__messages__message__upper
-        .chat__messages__message__upper__name
-          名前：sample
-        .chat__messages__message__upper__date
-          2019/05/05
-      .chat__messages__message__lower
-        おはよう
+    = render @messages
   .chat__form
     .chat__form__new-message
-      = form_for "" do |f|
-        = f.text_field :body, class: "chat__form__new-message__text", placeholder: "type a message"
-        %label.chat__form__new-message__upload-label{for: "upload-icon"}
-          %i.fa.fa-picture-o
-          = f.file_field :image, id:"upload-icon", class: "chat__form__new-message__upload-icon"
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: "chat__form__new-message__text", placeholder: "type a message"
+        = f.label :image, class: "chat__form__new-message__upload-label" do
+          =fa_icon "picture-o"
+          = f.file_field :image, class: "chat__form__new-message__upload-icon"
         = f.submit "Send", class: "chat__form__new-message__submit"
         

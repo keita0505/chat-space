@@ -14,6 +14,9 @@ $alert_orange: #F35500;
   color: #FFFFFF;
 }
 .header{
+  position: absolute;
+  z-index: 2;
+  width: 100vw;
   .notice {
     background-color: $light_blue;
     color: $white;
@@ -56,6 +59,7 @@ $alert_orange: #F35500;
    height: calc( 100vh - #{$header-height} );
    background-color: #2f3e51;
    padding: 0 20px;
+   overflow:auto;
    &__group{
      padding: 20px 0;
      &__name{
@@ -109,6 +113,7 @@ $alert_orange: #F35500;
   &__messages{
     background: #fafafa;
     padding: 0 40px;
+    overflow:auto;
     height: calc(100vh - #{$header-height} - #{$form-height});
     &__message{
       padding-top: 6px;
