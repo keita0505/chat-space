@@ -1,13 +1,7 @@
 $(function(){
   function buildHTML(message){
-    var content = ""
-    if(message.content_precence){
-      content = message.content
-    }
-    var img = ""
-    if (message.image_precence) {
-        img = `<img src="${message.image}">`
-    }
+    var content = message.content_precence ? message.content : "" ;
+    var img = message.image_precence ? `<img src="${message.image}">` : "" ;
     var html = `<div class="chat__messages__message">
                   <div class="chat__messages__message__upper">
                     <div class="chat__messages__message__upper__name">
@@ -38,10 +32,11 @@ $(function(){
       processData: false,
       contentType: false
     })
+    
     .done(function(data){
       var html = buildHTML(data);
       $('.chat__messages').append(html)
-      $('.chat__form__new-message__text').val('')
+      $("#new_message")[0].reset();
       $('.chat__form__new-message__submit').removeAttr('disabled');
       $('.chat__messages').animate({ scrollTop: $('.chat__messages')[0].scrollHeight});
     })
