@@ -17,7 +17,6 @@ $(function(){
   $(function() {
     $("#user-search-field").on("input", function() {
       var input = $("#user-search-field").val();
-      console.log(input);
 
       $.ajax({
         type: 'GET',
@@ -27,7 +26,6 @@ $(function(){
       })
 
       .done(function(users) {
-        console.log(users.length);
         $("#user-search-result").empty();
         if (users.length !== 0) {
           users.forEach(function(user){
