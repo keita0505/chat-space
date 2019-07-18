@@ -17,7 +17,6 @@ $(function(){
   $(function() {
     $("#user-search-field").on("input", function() {
       var input = $(this).val();
-      console.log(input)
       $.ajax({
         type: 'GET',
         url: '/users',
