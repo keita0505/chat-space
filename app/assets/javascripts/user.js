@@ -16,8 +16,8 @@ $(function(){
   }
   $(function() {
     $("#user-search-field").on("input", function() {
-      var input = $("#user-search-field").val();
-
+      var input = $(this).val();
+      console.log(input)
       $.ajax({
         type: 'GET',
         url: '/users',
@@ -57,15 +57,14 @@ $(function() {
      var user_id = $(this).attr('data-user-id')
      var user_name = $(this).attr('data-user-name')
 
-     $('.chat-group-user').empty();
+     $(this).parent().remove();
      var html = addUserHTML(user_name, user_id);
-     $('#chat-group-users').append(html)
+     $('#member_search_result').append(html)
   });
 });  
 
 $(function() {
   $(document).on("click", ".chat-group-user__btn--remove", function () {
-     
-     $('#chat-group-user-8').empty();
+     $(this).parent().remove();
   });
 });  
