@@ -1,8 +1,8 @@
 $(function(){
   function buildHTML(message){
-    var content = message.content_precence ? message.content : "" ;
-    var img = message.image_precence ? `<img src="${message.image}">` : "" ;
-    var html = `<div class="chat__messages__message">
+    var content = message.content_presence ? message.content : "" ;
+    var img = message.image_presence ? `<img src="${message.image}">` : "" ;
+    var html = `<div class="chat__messages__message", data-id="${message.id}">
                   <div class="chat__messages__message__upper">
                     <div class="chat__messages__message__upper__name">
                       ${message.name}
@@ -44,4 +44,27 @@ $(function(){
       alert('error');
     })
   })
+  var reloadMessages = function() {
+    last_message_id = $(".chat__messages__message:last").data('id')
+    $.ajax({
+      url: 'api/messages',
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      
+      messages.forEach(function(message){
+        var html = buildHTML(message);
+        $('.chat__messages').append(html)
+        $('.chat__messages').animate({ scrollTop: $('.chat__messages')[0].scrollHeight});
+      })
+    })
+    .fail(function() {
+      alert('error');
+    });
+  };
+  if(document.URL.match("/messages")){
+    setInterval(reloadMessages, 5000);
+  }
 })

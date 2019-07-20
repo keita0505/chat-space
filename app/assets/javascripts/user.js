@@ -14,30 +14,37 @@ $(function(){
                 </div>`
     search_list.append(html);
   }
+
   $(function() {
     $("#user-search-field").on("input", function() {
       var input = $(this).val();
-      $.ajax({
-        type: 'GET',
-        url: '/users',
-        data: { keyword: input },
-        dataType: 'json'
-      })
-
-      .done(function(users) {
+      if (input.length == 0) {
         $("#user-search-result").empty();
-        if (users.length !== 0) {
-          users.forEach(function(user){
-            appendUser(user);
-          });
-        }
-        else {
-          appendErrMsgToHTML("一致するユーザーはいません");
-        }
-      })
-      .fail(function() {
-        alert('ユーザー検索に失敗しました');
-      })
+      }
+      else{
+        $.ajax({
+          type: 'GET',
+          url: '/users',
+          data: { keyword: input },
+          dataType: 'json'
+        })
+        
+        
+        .done(function(users) {
+          $("#user-search-result").empty();
+          if (users.length !== 0) {
+            users.forEach(function(user){
+              appendUser(user);
+            });
+          }
+          else {
+            appendErrMsgToHTML("一致するユーザーはいません");
+          }
+        })
+        .fail(function() {
+          alert('ユーザー検索に失敗しました');
+        })
+      }
     });
   });
 });
