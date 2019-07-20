@@ -22,12 +22,15 @@
       .chat__header__left-contents__group-name
         =@group.name
       .chat__header__left-contents__menber-list
-        =@group.name
+        - @group.users.each do |user|
+          = user.name
     .chat__header__right-contents
       = link_to edit_group_path(@group.id), class: "chat__header__right-contents__btn chat__header__right-contents__btn--group-neme-edit" do
         Edit
-  .chat__messages
+  
+  .chat__messages#messages
     = render @messages
+  
   .chat__form
     .chat__form__new-message
       = form_for [@group, @message] do |f|
