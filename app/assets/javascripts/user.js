@@ -66,8 +66,8 @@ $(function() {
   };
   $(document).on("click", ".chat-group-user__btn--add", function () {
      
-     var user_id = $('.chat-group-user__btn--add').data('user-id')
-     var user_name = $('.chat-group-user__btn--add').data('user-name')
+     var user_id = $(this).data('user-id')
+     var user_name = $(this).data('user-name')
      $(this).parent().remove();
      var html = addUserHTML(user_name, user_id);
      $('#member_search_result').append(html)
