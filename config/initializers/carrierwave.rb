@@ -13,5 +13,5 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'chat-space-strage'
-  config.asset_host = 'https://s3-ap-northest-1(※例 ap-northeast-1).amazonaws.com/ここにバケット名を入れます'
+  config.asset_host = 'https://s3-ap-northest-1.amazonaws.com/chat-space-strage'
 end
